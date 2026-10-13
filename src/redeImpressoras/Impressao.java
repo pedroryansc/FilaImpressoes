@@ -1,6 +1,10 @@
 package redeImpressoras;
 
-public class Impressao implements Runnable{
+import java.io.Serializable;
+
+public class Impressao implements Runnable, Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private String nomeArquivo;
 	private int quantPaginas;
 	private String nomeUsuario;
@@ -11,8 +15,22 @@ public class Impressao implements Runnable{
 		this.nomeUsuario = nomeUsuario;
 	}
 	
+	public String getNomeArquivo() {
+		return nomeArquivo;
+	}
+	
+	public int getQuantPaginas() {
+		return quantPaginas;
+	}
+	
+	public String getNomeUsuario() {
+		return nomeUsuario;
+	}
+	
 	public void run() {
-		System.out.println("Usuário " + nomeUsuario + " conectado à Impressora X\n");
+		String nomeImpressora = Thread.currentThread().getName();
+		
+		System.out.println("Usuário " + nomeUsuario + " conectado à Impressora " + nomeImpressora + "\n");
 		
 		System.out.println("Impressora X: Iniciando a impressão de '" + nomeArquivo + "' - " + quantPaginas + " página(s)\n");
 		
