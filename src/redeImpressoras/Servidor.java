@@ -22,7 +22,7 @@ public class Servidor {
 		// Pool das impressoras
 		ExecutorService poolImpressoras = Executors.newFixedThreadPool(QUANT_IMPRESSORAS);
 
-		// Pool das conexões (uma tarefa por cliente conectado)
+		// Pool das conexões (uma thread para cada cliente conectado)
 		ExecutorService poolConexoes = Executors.newCachedThreadPool();
 
 		try(ServerSocket servidor = new ServerSocket(1234)) {
